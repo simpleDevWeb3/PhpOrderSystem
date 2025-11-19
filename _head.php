@@ -174,7 +174,21 @@
   <button class="<?= $title === 'food' ? 'active' : '' ?>" data-get="/">food</button>
   <button class="<?= $title === 'breverage' ? 'active' : '' ?>" data-get="/page/catalog.php">breverage</button>
   <button class="<?= $title === 'cart' ? 'active' : '' ?>" data-get="/page/demo2.php">cart</button>
+  <form action="/page/searchOrder.php" method="GET" style="display:flex;gap:8px;align-items:center;">
+    <input 
+        type="text" 
+        name="order_no" 
+        placeholder="Search order number..." 
+        required
+        style="padding:6px;border:1px solid #ccc;border-radius:4px;"
+    >
+    <button type="submit" style="padding:6px 12px;border:none;border-radius:4px;background:#007bff;color:white;">
+        Search
+    </button>
+</form>
+
 </nav>
+
 
 </body>
 </html>
