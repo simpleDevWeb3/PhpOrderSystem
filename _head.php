@@ -172,7 +172,7 @@
 
 <nav>
   <button class="<?= $title === 'food' ? 'active' : '' ?>" data-get="/">food</button>
-  <button class="<?= $title === 'breverage' ? 'active' : '' ?>" data-get="/page/demo1.php">breverage</button>
+  <button class="<?= $title === 'breverage' ? 'active' : '' ?>" data-get="/page/catalog.php">breverage</button>
   <button class="<?= $title === 'cart' ? 'active' : '' ?>" data-get="/page/demo2.php">cart</button>
 </nav>
 
