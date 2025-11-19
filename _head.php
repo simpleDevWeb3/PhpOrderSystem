@@ -13,9 +13,10 @@
   <style>
     body {
       display: grid;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
-      grid-template-rows:  1fr auto;
+       display: flex;
+  flex-direction: column; 
   
     }
 
@@ -55,14 +56,16 @@
     }
 
     .template{
-      padding-top: 2rem;
-      
+     
+       flex: 1;
+
         
     }
 
     .Content{
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .card{
@@ -188,7 +191,6 @@
 </form>
 
 </nav>
+<p>Added!</p>
 
 
-</body>
-</html>
