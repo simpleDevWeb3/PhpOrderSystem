@@ -1,34 +1,19 @@
-export async function AddToCartApi(id) {
-  /*
-  $.ajax({
-    method: "POST",
-    url: "/server/cart.php",
-    data: { id },
-    dataType: "json",
-  })
-    .done((res) => {
-      console.log("sended to server");
-      if (res.status === "ok") {
-        console.log("Cart saved:", res.cart_id);
-        return true;
-      } else if (res.status === "error") {
-        console.log("Cart not  saved");
-        return false;
-      }
-    })
-    .catch((err) => console.error(err));*/
+export async function AddToCartApi(id, quantity) {
   try {
-    const data = await fetch("/server/cart.php", {
+    const res = await fetch("/server/cart.php", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id, quantity }),
     });
-    const res = await data.json();
-    if (res.status !== "ok") throw new Error("Cart saved:", res.cart_id);
-    else return true;
+
+    const data = await res.json();
+    if (data.status !== "ok") throw new Error("Cart error");
+    return data.cart;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
+
+

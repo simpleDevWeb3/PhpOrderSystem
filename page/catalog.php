@@ -84,13 +84,11 @@ $beverage = [
     <!---Cart ---->
     <ul class="cart" >
       <button class="close-cart"><i class="ri-arrow-right-line"></i></button>
-      
+  
       <h2>Cart</h2>
-      <?php foreach($beverage as $b=>$v): ?>
-        <?php CartItem($v); ?>
-      <?php endforeach; ?>
-
-        <button class="place-order" ><i class="ri-wallet-line" style="  font-size: 18px;"></i>Place Order</button>
+        
+       <button class="place-order" ><i class="ri-wallet-line" style="  font-size: 18px;"></i>Place Order</button>
+        <ul class="cart-list" style="padding: 0;"></ul>
     </ul>
 </div>
 
