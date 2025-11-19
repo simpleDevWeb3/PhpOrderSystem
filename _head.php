@@ -15,9 +15,9 @@
       display: grid;
       min-height: 100vh;
       margin: 0;
-       display: flex;
-  flex-direction: column; 
-  
+      display: flex;
+      flex-direction: column; 
+   
     }
 
     nav {
@@ -169,6 +169,27 @@
   border: none;
   
 }
+.toaster{
+  z-index:9999; 
+  position:fixed; 
+  left:auto; 
+  right:auto; 
+  top:0; 
+  border:solid 1px rgba(0,0,0,0.1);
+  border-radius:25px; 
+  padding:1rem 2rem; 
+  background:rgba(255, 255, 255, 0.95);
+  transform: translateX(-500px);
+  transition:transform 0.15s ease;
+  display: flex;
+  gap:0.5rem;
+  box-shadow:1px 1px 5px rgba(0,0,0,0.1);
+  font-weight: 700;
+  
+}
+.show-toast{
+    transform: translateX(0px);
+}
   </style>
 </head>
 <body>
@@ -191,6 +212,6 @@
 </form>
 
 </nav>
-<p>Added!</p>
+<p class="toaster"><span>Added To Card</span><i style="color: rgba(69, 212, 29, 1); " class="ri-checkbox-circle-fill"></i> </p>
 
 
