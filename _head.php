@@ -1,6 +1,7 @@
 <?php $title = $title ?? 'index'; ?>
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,31 @@
 
   <script  type="module" src="/js/app.js" defer></script>
   <style>
+
+     body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* This wraps everything (header, content, footer) */
+    .page-container {
+        min-height: 100vh;           /* Full screen height */
+        display: flex;
+        flex-direction: column;      /* Stack vertically */
+    }
+
+    /* This is your content area */
+    .content-wrapper {
+        flex: 1;                     /* Push footer to bottom */
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px 0;
+        background: #f3f3f3;
+        margin-top: auto;            /* Forces it to stay at the bottom */
+    }
     body {
       display: grid;
       min-height: 100vh;
@@ -278,10 +304,10 @@
   <div>
   <form action="/page/searchOrder.php" method="GET" style="display:flex;gap:8px;align-items:center;">
     <input 
-        type="text" 
-        name="order_no" 
+        type="number" 
+        name="order_id" 
         placeholder="Search order number..." 
-        required
+        
         style="padding:6px;border:1px solid #ccc;border-radius:4px;"
     >
     <button type="submit" style="padding:6px 12px;border:none;border-radius:4px;background:#007bff;color:white;">
