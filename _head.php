@@ -337,7 +337,18 @@
   border-color: rgba(255, 0, 234, 0.6);
   box-shadow: 0 0 0 4px rgba(255, 0, 238, 0.15);
 }
-
+.img-container{
+  width:fit-content;
+  max-height:111px;
+   overflow: hidden;
+}
+.product-img{
+  max-width: 100%;
+  max-height: 100%;
+ 
+  object-fit: cover; 
+  object-position: center; 
+}
 .start-order{
   background-color: #9e21a9ff; 
   color:whitesmoke;

@@ -3,7 +3,8 @@ session_start();
 require_once __DIR__."/../_base.php";
 header('Content-Type: application/json');
 
-// Beverages data
+// Dummy data
+/*
 $beverages = [
     (object)["id" => 1, "name" => "Latte", "description" => "Creamy espresso with steamed milk", "price" => 4.50, "image" => "/images/latte.jpg"],
     (object)["id" => 2, "name" => "Green Tea", "description" => "Organic green tea leaves, hot or iced", "price" => 3.00, "image" => "/images/green-tea.jpg"],
@@ -13,9 +14,10 @@ $beverages = [
     (object)["id" => 6, "name" => "Coffee", "description" => "Hot brewed coffee", "price" => 3.50, "image" => "/images/coffee.jpg"],
     (object)["id" => 7, "name" => "Tea", "description" => "Green or black tea", "price" => 2.50, "image" => "/images/tea.jpg"],
     (object)["id" => 8, "name" => "Orange Juice", "description" => "Freshly squeezed", "price" => 4.00, "image" => "/images/orange-juice.jpg"]
-];
+];*/
 
-
+$stmt = $pdo->query("Select * From food");
+$beverages = $stmt->FETCHALL();
 
 
 // Read JSON input
@@ -27,7 +29,7 @@ if ($itemId !== null) {
     // Find product by ID
     $product = null;
     foreach ($beverages as $b) {
-        if ($b->id == $itemId) {
+        if ($b->food_id == $itemId) {
             $product = $b;
             break;
         }
@@ -41,7 +43,7 @@ if ($itemId !== null) {
 
         $found = false;
         foreach ($_SESSION['cart'] as $index => $cartItem) {
-            if ($cartItem->id == $product->id) {
+            if ($cartItem->food_id == $product->food_id) {
                 // Product exists → increase quantity
                 if (!isset($cartItem->quantity)) {
                     $cartItem->quantity = 0;

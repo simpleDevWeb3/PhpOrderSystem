@@ -1,5 +1,5 @@
  <?php
-
+//remember change to data->value
  function CartItem($data){
   echo "<li class='card'>";
     echo "<p>".$data["name"]."</p>";

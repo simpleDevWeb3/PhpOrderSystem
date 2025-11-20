@@ -28,7 +28,9 @@ $pass = "";
 $dbname = "cafeteria";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass,
+[PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,]);
+
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Connected successfully!"; // (Optional test)
 } catch (PDOException $e) {
