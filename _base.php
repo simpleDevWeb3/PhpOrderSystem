@@ -16,6 +16,12 @@ function Currency($price){
   return number_format($price, 2);
 }
 
+function redirect($url) {
+    header("Location: $url");
+    exit(); // stop further code
+}
+
+
 $host = "localhost"; 
 $user = "root"; 
 $pass = ""; 

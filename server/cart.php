@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__."/../_base.php";
 header('Content-Type: application/json');
 
 // Beverages data
