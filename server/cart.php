@@ -15,6 +15,9 @@ $beverages = [
     (object)["id" => 8, "name" => "Orange Juice", "description" => "Freshly squeezed", "price" => 4.00, "image" => "/images/orange-juice.jpg"]
 ];
 
+
+
+
 // Read JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 $itemId = $data['id'] ?? null;
