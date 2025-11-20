@@ -5,11 +5,10 @@ $(document).ready(() => {
   const cart = $(".cart");
   const productList = $(".product-list");
   const loader = `<div class="loader" style="position:fixed; z-index:999; left:45%; top:45%;"></div>`;
-  const overlay = $(".overlay");
+
   //func
   const showLoader = () => {
     $("body").append(loader);
-    
   };
   const hideLoader = () => {
     $(".loader").remove();
@@ -32,8 +31,7 @@ $(document).ready(() => {
 
     if (!items || items.length === 0) {
       cart_list.html(" ");
-      cart.removeClass("show-affect");
-      productList.removeClass("show-affect-list");
+      closeCart();
       return;
     }
 
@@ -90,6 +88,17 @@ $(document).ready(() => {
     showLoader();
     const cartData = await AddToCartApi(id, -1);
     hideLoader();
+
+    if (Array.isArray(cartData) && cartData.length === 0) {
+      console.log("no cart");
+
+      closeCart();
+      appendCartList(cartData);
+      toast_show(` 
+        <span>Removed From Cart!</span><i style="color: rgba(212, 29, 29, 1); "class="ri-close-circle-fill"></i>`);
+
+      return;
+    }
     if (cartData) {
       appendCartList(cartData);
       showCart();
@@ -108,7 +117,18 @@ $(document).ready(() => {
     card.css("transform", "translateX(0rem)");
     showLoader();
     const cartData = await AddToCartApi(id, 0);
+    console.log(cartData);
     hideLoader();
+    if (Array.isArray(cartData) && cartData.length === 0) {
+      console.log("no cart");
+
+      closeCart();
+      appendCartList(cartData);
+      toast_show(` 
+        <span>Removed From Cart!</span><i style="color: rgba(212, 29, 29, 1); "class="ri-close-circle-fill"></i>`);
+
+      return;
+    }
     if (cartData) {
       appendCartList(cartData);
       showCart();

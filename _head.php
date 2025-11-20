@@ -85,18 +85,20 @@
       padding-top: 2rem;
     }
 
-    .card{
-      display: grid;
-      grid-template-columns: 1fr 4fr 1fr;
-      align-items: start;
-      gap:1rem;
-      align-items: center;
-      border-bottom: solid 1px rgba(0,0,0,0.1);
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      position: relative;
-      transition: transform 0.4s ease;
-    }
+.card{
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  gap:1rem;
+  align-items: center;
+  border-bottom: solid 1px rgba(0,0,0,0.1);
+  padding: 1rem 0;
+  position: relative;
+
+ 
+}
+
+
+    
     .card >button{
       cursor: pointer;
       border: none;
@@ -121,6 +123,9 @@
     }
     .cart-icon:hover{
       opacity: 0.6;
+    }
+    .navbar{
+      padding:0.5rem 1rem;
     }
     .cart{
       position: fixed;
@@ -228,6 +233,10 @@
   border: none;
   
 }
+.logo{
+  font-weight: 700;
+  font-size: 25px;
+}
 .toaster{
   z-index:9999; 
   position:fixed; 
@@ -253,6 +262,66 @@
 }
 
 
+
+.home-hero {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 60px;
+}
+
+
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #a828daff;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+.hero-text h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #9e21a9ff;
+  margin-top: 10px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.name-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 25px;
+
+  font-size: 1rem;
+  color: #333;
+
+  outline: none;
+  transition: 0.25s ease;
+  height: 1rem;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.name-input:focus {
+  border-color: rgba(255, 0, 234, 0.6);
+  box-shadow: 0 0 0 4px rgba(255, 0, 238, 0.15);
+}
+
+.start-order{
+  background-color: #9e21a9ff; 
+  color:whitesmoke;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+}
+
+
 /* HTML: <div class="loader"></div> */
 .loader {
   width: 15px;
@@ -270,10 +339,9 @@
 </head>
 <body>
 
-<nav>
+<nav class="navbar">
   <div>
-    <button class="<?= $title === 'food' ? 'active' : '' ?>" data-get="/">food</button>
-    <button class="<?= $title === 'breverage' ? 'active' : '' ?>" data-get="/page/catalog.php">breverage</button>
+    <label class="logo"  data-get="/">Foodie</label>
   </div>
   <div>
   <form action="/page/searchOrder.php" method="GET" style="display:flex;gap:8px;align-items:center;">
@@ -291,8 +359,7 @@
 </form>
 </div>
 <div>
-  
-    <i class="ri-shopping-basket-2-fill cart-icon"  data-get="/page/cart.php"></i>
+  <span><?= htmlspecialchars($user) ?></span>
 </div>
 </nav>
 <p class="toaster">

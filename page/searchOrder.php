@@ -30,12 +30,8 @@ if ($search !== '') {
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Order</title>
-</head>
-<body>
+
+<div class="Content" style="display:flex; flex-direction:column;">
 
 <h2>Search Result</h2>
 
@@ -51,8 +47,5 @@ if ($search !== '') {
 <br>
 <a href="../index.php">Back to Home</a>
 
-</body>
-</html>
-
-
+</div>
 <?php include "../_foot.php"?>
