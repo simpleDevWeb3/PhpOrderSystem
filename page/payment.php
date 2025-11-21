@@ -1,11 +1,18 @@
+<?php
+require "../_base.php";
+
+session_start();
+if (empty($_SESSION['name'])) {
+    header("Location: /"); 
+    exit;
+}
+$user = $_SESSION['name'] ?? "guest";
+$cartItem = $_SESSION['cart'];
+$total_price = 0;
+//include "../_head.php";
 
 
-
-
-
-
-
-
+?>
 
 
 <title>Checkout</title>
@@ -92,7 +99,7 @@
     button {
         width: 100%;
         padding: 15px;
-        background: #487eb0;
+        background: rgba(157, 19, 231, 0.8);
         border: none;
         color: white;
         font-size: 16px;
@@ -114,31 +121,23 @@
 
     <!-- Cart Items -->
     <div class="cart">
-        <div class="cart-item">
-            <div class="details">
-                <span>Product A</span>
-                <span class="quantity">x2</span>
-            </div>
-            <span>RM 100.00</span>
-        </div>
-        <div class="cart-item">
-            <div class="details">
-                <span>Product B</span>
-                <span class="quantity">x1</span>
-            </div>
-            <span>RM 30.00</span>
-        </div>
-        <div class="cart-item">
-            <div class="details">
-                <span>Product C</span>
-                <span class="quantity">x3</span>
-            </div>
-            <span>RM 60.00</span>
-        </div>
-
+        <?php foreach($cartItem as $item){
+            echo "        
+                <div class='cart-item'>
+                    <div class='details'>
+                        <span> $item->name </span>
+                        <span class='quantity'> x$item->quantity</span>
+                    </div>
+                    <span>RM $item->price/cup </span>
+                    <span>RM ".($item->price * $item->quantity)." </span>
+                </div>
+            ";
+            $total_price += $item->price * $item->quantity;
+        } ?> 
+        
         <div class="total">
             <span>Total</span>
-            <span>RM 190.00</span>
+            <span><?= $total_price ?></span>
         </div>
     </div>
 
@@ -151,5 +150,5 @@
         <label><input type="radio" name="payment"> eWallet (Touch ‘n Go, GrabPay)</label>
     </div>
 
-    <button>Pay RM 190.00</button>
+    <button>RM <?= $total_price ?></button>
 </div>
