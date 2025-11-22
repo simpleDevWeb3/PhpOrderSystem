@@ -16,15 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $payment_method = req('payment') ?? redirect("/");
+    //$payment_method = req('payment') ?? redirect("/");
     $total_price = $_SESSION['total_price'] ?? redirect("/");
     
     $pdo->beginTransaction();
 
     $stm = $pdo->prepare('INSERT INTO guest_order
-                            (cust_name, total_price, payment_method, `status`)
-                            VALUES(?, ?, ?, ?)');
-    $stm->execute([$user, $total_price, $payment_method, false]);
+                            (cust_name, total_price, `status`)
+                            VALUES(?, ?, ?)');
+    $stm->execute([$user, $total_price, false]);
     $order_id = $pdo->lastInsertId();
 
     $stm = $pdo->prepare('INSERT INTO order_food
